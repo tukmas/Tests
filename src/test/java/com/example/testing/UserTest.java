@@ -17,7 +17,7 @@ class UserTest {
         name = "Сергей";
         login = "tukma";
         email = "tukmachev.18@yandex.ru";
-        user = new User();
+//        user = new User();
     }
 
     @Test
