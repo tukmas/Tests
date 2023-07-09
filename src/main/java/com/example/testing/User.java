@@ -1,6 +1,7 @@
 package com.example.testing;
 
 
+import java.util.FormatterClosedException;
 import java.util.Objects;
 
 public class User {
@@ -9,6 +10,8 @@ public class User {
     private String email;
 
     public User(String name, String login, String email) {
+        checkEmail(email);
+        checkLoginAndEmail(login, email);
         this.name = name;
         this.login = login;
         this.email = email;
@@ -16,9 +19,21 @@ public class User {
     public User() {
     }
 
+    public void checkEmail(String email) {
+        if (!email.contains("@") || !email.contains(".")) {
+            System.out.println("Некорректный формат почты");
+            throw new FormatterClosedException();
+        }
+    }
 
+    public void checkLoginAndEmail(String login, String email) {
+        if (login.equals(email)) {
+            System.out.println("Логин и почта не должны быть равны");
+            throw new FormatterClosedException();
+        }
+    }
     public String getName() {
-        return name;
+            return name;
     }
 
     public String getLogin() {
@@ -29,6 +44,26 @@ public class User {
         return email;
     }
 
+    public void setName(String name) {
+        if (name != null) {
+        this.name = name;
+    }
+        throw new FormatterClosedException();
+    }
+
+    public void setLogin(String login) {
+        if (login != null) {
+        this.login = login;
+    }
+        throw new FormatterClosedException();
+    }
+
+    public void setEmail(String email) {
+        if (email != null) {
+        this.email = email;
+        }
+        throw new FormatterClosedException();
+    }
 
     @Override
     public boolean equals(Object o) {
