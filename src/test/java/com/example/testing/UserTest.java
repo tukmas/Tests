@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     private static String name;
@@ -17,7 +16,7 @@ class UserTest {
         name = "Сергей";
         login = "tukma";
         email = "tukmachev.18@yandex.ru";
-//        user = new User();
+        user = new User();
     }
 
     @Test
