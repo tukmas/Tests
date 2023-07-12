@@ -1,62 +1,32 @@
 package com.example.testing;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
-    private static String name;
-    private static String login;
-    private static String email;
-    static User user;
-
-    @BeforeAll
-    private static void whetherSettingDataWhenCreatingAnObject() {
-        name = "Сергей";
-        login = "tukma";
-        email = "tukmachev.18@yandex.ru";
-        user = new User();
-    }
+    private final User user = new User("Сергей", "tukma", "tukmachev.18@yandex.ru");
 
     @Test
-    void checkUserName() {
-        Assertions.assertEquals("Сергей", user.checkUserName("Сергей"));
+    void checkUser() {
+        Assertions.assertEquals("Сергей", user.getName());
+        Assertions.assertEquals("tukma", user.getLogin());
+        Assertions.assertEquals("tukmachev.18@yandex.ru", user.getEmail());
     }
-
     @Test
-    void checkUserLogin() {
-        Assertions.assertEquals("tukma", user.checkUserLogin("tukma"));
+    void checkUserNull() {
+        Assertions.assertNotNull(user.getName());
+        Assertions.assertNotNull(user.getLogin());
+        Assertions.assertNotNull(user.getEmail());
     }
-
     @Test
-    void checkUserEmail() {
-        Assertions.assertEquals("tukmachev.18@yandex.ru", user.checkUserEmail("tukmachev.18@yandex.ru"));
-    }
-
-    @Test
-    void checkUserNameNull() {
-        Assertions.assertNotNull(user.checkUserName("Сергей"));
-    }
-
-    @Test
-    void checkUserLoginNull() {
-        Assertions.assertNotNull(user.checkUserLogin("tukma"));
-    }
-
-    @Test
-    void checkUserEmailNull() {
-        Assertions.assertNotNull(user.checkUserEmail("tukmachev.18@yandex.ru"));
-    }
-
-    @Test
-    void getEmail() {
-        Assertions.assertTrue(email.contains("@") && email.contains("."));
+    void checkEmail() {
+        Assertions.assertTrue(user.getEmail().contains("@"));
+        Assertions.assertTrue(user.getEmail().contains("."));
     }
     @Test
     void checkUserNameLogin() {
-
-        Assertions.assertNotEquals(user.checkUserName("Сергей"), user.checkUserLogin("tukma"));
+        Assertions.assertNotEquals(user.getEmail(), user.getLogin());
     }
+
 }
