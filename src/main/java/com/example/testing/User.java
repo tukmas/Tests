@@ -8,6 +8,7 @@ public class User {
     private String login;
     private String email;
 
+
     public User(String name, String login, String email) {
         checkEmail(email);
         checkLoginAndEmail(login, email);
@@ -17,7 +18,6 @@ public class User {
     }
     public User() {
     }
-
     public void checkEmail(String email) {
         if (!email.contains("@") || !email.contains(".")) {
             System.out.println("Некорректный формат почты");
@@ -43,25 +43,25 @@ public class User {
         return email;
     }
 
-    public void setName(String name) {
-        if (name != null) {
+    public void setName(String name) throws FormatterClosedException  {
+        if (this.name != null) {
         this.name = name;
     }
-        throw new FormatterClosedException();
+    else throw new FormatterClosedException();
     }
 
-    public void setLogin(String login) {
-        if (login != null) {
+    public void setLogin(String login) throws FormatterClosedException {
+        if (this.login != null) {
         this.login = login;
     }
-        throw new FormatterClosedException();
+    else throw new FormatterClosedException();
     }
 
-    public void setEmail(String email) {
-        if (email != null) {
+    public void setEmail(String email) throws FormatterClosedException {
+        if (this.email != null) {
         this.email = email;
         }
-        throw new FormatterClosedException();
+    else throw new FormatterClosedException();
     }
 
 }
